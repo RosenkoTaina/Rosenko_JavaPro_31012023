@@ -1,5 +1,7 @@
 package com.hillel.rosenko.lessons.lesson3;
 
+import com.hillel.rosenko.lessons.lesson3.task1.SameName;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -19,6 +21,14 @@ public class Main {
               .setAge(31);
 
         employee.displayInfo();
+
+        SameName sameName = new SameName("test");
+        sameName.printName();
+
+        com.hillel.rosenko.lessons.lesson3.task2.SameName sameName1 = new com.hillel.rosenko.lessons.lesson3.task2.SameName("test2");
+        sameName1.printName();
+
+
     }
 
 
