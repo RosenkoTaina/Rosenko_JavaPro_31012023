@@ -7,7 +7,7 @@ public class Cat extends Animal{
     public Cat(String name, int runDistance) {
         super(name);
         this.runDistance = runDistance;
-        System.out.println("Cat " + super.name);
+        System.out.println("Cat " + name);
     }
 
 
@@ -19,13 +19,13 @@ public class Cat extends Animal{
 
     @Override
     public void run() {
-        System.out.println(name + " run " + getRunDistance() + " meters");
+        System.out.println(getName() + " run " + getRunDistance() + " meters");
     }
 
 
     @Override
     public void swim() {
-        System.out.println(name + " can`t swim " );
+        System.out.println(getName() + " can`t swim " );
     }
 
 }
