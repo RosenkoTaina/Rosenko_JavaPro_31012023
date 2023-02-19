@@ -9,7 +9,7 @@ public class Main {
         };
 
         Animal[] animals = {
-                new Cat("Tom", 5),
+                new Cat("Tom", 50),
                 new Dog("Sausage", 10,200)
 
         };
@@ -19,6 +19,9 @@ public class Main {
                 obstacle.start(animal);
             }
         }
-
+        int k = animals.length;
+        System.out.println("Number of animals: " + k);
+        System.out.println(Cat.noOfCats + " cat");
+        System.out.println(Dog.noOfDogs + " dog");
     }
 }

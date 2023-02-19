@@ -3,7 +3,7 @@ package com.hillel.rosenko.lessons.lesson4;
 public class Dog extends Animal {
     int swimDistance;
     int runDistance;
-
+    static int noOfDogs = 0;
     public Dog(String name, int swimDistance, int runDistance) {
         super(name);
         this.swimDistance = swimDistance;
@@ -21,7 +21,9 @@ public class Dog extends Animal {
                 throw new IllegalArgumentException("dog cant run so far");
             } else return runDistance;
         }
-
+    static {
+        noOfDogs += 1;
+    }
 
     @Override
         public void run() {
@@ -35,4 +37,6 @@ public class Dog extends Animal {
         }
 
     }
+
+
 

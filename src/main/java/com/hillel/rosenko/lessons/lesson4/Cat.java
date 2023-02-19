@@ -1,7 +1,7 @@
 package com.hillel.rosenko.lessons.lesson4;
 
 public class Cat extends Animal{
-
+    static int noOfCats = 0;
     int runDistance;
 
     public Cat(String name, int runDistance) {
@@ -17,6 +17,10 @@ public class Cat extends Animal{
         } else return runDistance;
     }
 
+
+    static {
+        noOfCats += 1;
+    }
     @Override
     public void run() {
         System.out.println(getName() + " run " + getRunDistance() + " meters");
@@ -27,6 +31,7 @@ public class Cat extends Animal{
     public void swim() {
         System.out.println(getName() + " can`t swim " );
     }
+
 
 }
 
