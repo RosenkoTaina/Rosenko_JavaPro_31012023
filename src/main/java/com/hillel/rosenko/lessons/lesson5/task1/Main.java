@@ -6,6 +6,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
+        final float[] totalCircles = new float[]{0};
+        final float[] totalSquares = new float[]{0};
+        final float[] totalTriangles = new float[]{0};
+
+
         List<Triangle> triangles = new ArrayList<>();
         triangles.add(new RegularTriangle(5, 5, 5));
         triangles.add(new RegularTriangle(5, 6, 8));
@@ -14,12 +20,14 @@ public class Main {
         triangles.add(new RegularTriangle(11, 20, 24));
 
         triangles.forEach(triangle -> {
-            System.out.println("Triangle № " + (triangles.indexOf(triangle) + 1));
-            System.out.printf("Shape: %.2f", triangle.getShape());
-            System.out.println();
-                }
+                    System.out.println("Triangle № " + (triangles.indexOf(triangle) + 1));
+                    System.out.printf("Shape: %.2f", triangle.getShape());
+                    System.out.println();
+                    System.out.println("TOTAL: " + (totalTriangles[0] += triangle.getShape()));
+                    }
 
         );
+
 
         List<Circle> circles = new ArrayList<>();
         circles.add(new RegularCircle(5));
@@ -32,7 +40,9 @@ public class Main {
                     System.out.println("Circle № " + (circles.indexOf(circle) + 1));
                     System.out.printf("Shape: %.2f", circle.getShape());
                     System.out.println();
+                    System.out.println("TOTAL: " + (totalCircles[0] += circle.getShape()));
                 }
+
         );
 
 
@@ -44,12 +54,16 @@ public class Main {
         squares.add(new RegularSquare(8));
 
         squares.forEach(square -> {
-                    System.out.println("Circle № " + (squares.indexOf(square) + 1));
+                    System.out.println("Square № " + (squares.indexOf(square) + 1));
                     System.out.printf("Shape: %.2f", square.getShape());
                     System.out.println();
+                    System.out.println("TOTAL: " + (totalSquares[0] += square.getShape()));
                 }
         );
+
+
     }
+
 }
 
 

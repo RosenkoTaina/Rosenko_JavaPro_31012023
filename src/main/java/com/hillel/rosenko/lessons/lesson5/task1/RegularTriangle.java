@@ -3,8 +3,6 @@ package com.hillel.rosenko.lessons.lesson5.task1;
 import static java.lang.Math.sqrt;
 
 public class RegularTriangle implements Triangle {
-
-
     private final double side1;
     private final double side2;
     private final double side3;
@@ -14,7 +12,6 @@ public class RegularTriangle implements Triangle {
         this.side2 = side2;
         this.side3 = side3;
     }
-
 
     @Override
     public double getPerimeter() {
