@@ -24,7 +24,8 @@ public class Main {
                 }
 
         );
-        System.out.println("TOTAL: " + (totalTriangles[0]));
+        System.out.printf("TOTAL: %.2f", (totalTriangles[0]));
+        System.out.println();
 
         List<Circle> circles = new ArrayList<>();
         circles.add(new Circle(5));
@@ -37,7 +38,8 @@ public class Main {
                     totalCircles[0] += circle.getArea();
                 }
         );
-        System.out.println("TOTAL: " + (totalCircles[0]));
+        System.out.printf("TOTAL: %.2f", (totalCircles[0]));
+        System.out.println();
 
 
         List<Square> squares = new ArrayList<>();
@@ -52,22 +54,20 @@ public class Main {
                     totalSquares[0] += square.getArea();
                 }
         );
-        System.out.println("TOTAL: " + (totalSquares[0]));
+        System.out.printf("TOTAL: %.2f", (totalSquares[0]));
+        System.out.println();
 
 
-        Figure[] figures = new Figure[]{
-                new Triangle(5, 5, 5),
-                new Triangle(5, 6, 8),
-                new Circle(5),
-                new Circle(2),
-                new Square(5),
-                new Square(6)
-        };
+        List<Figure> figures = new ArrayList<>();
+        figures.addAll(triangles);
+        figures.addAll(circles);
+        figures.addAll(squares);
 
         double totalArea = getTotalArea(figures);
-        System.out.println("Total area of figures: " + totalArea);
+        System.out.printf("Total area of figures: %.2f", totalArea);
+        System.out.println();
     }
-        public static double getTotalArea(Figure[] figures) {
+        public static double getTotalArea(List<Figure> figures) {
             double totalArea = 0;
             for (Figure figure : figures) {
                 totalArea += figure.getArea();
@@ -75,8 +75,18 @@ public class Main {
             return totalArea;
         }
 
-
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     
