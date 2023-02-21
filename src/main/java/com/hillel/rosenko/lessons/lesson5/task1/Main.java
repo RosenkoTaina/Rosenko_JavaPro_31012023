@@ -23,11 +23,11 @@ public class Main {
                     System.out.println("Triangle № " + (triangles.indexOf(triangle) + 1));
                     System.out.printf("Shape: %.2f", triangle.getShape());
                     System.out.println();
-                    System.out.println("TOTAL: " + (totalTriangles[0] += triangle.getShape()));
+                    totalTriangles[0] += triangle.getShape();
                     }
 
         );
-
+        System.out.println("TOTAL: " + (totalTriangles[0]));
 
         List<Circle> circles = new ArrayList<>();
         circles.add(new RegularCircle(5));
@@ -40,10 +40,11 @@ public class Main {
                     System.out.println("Circle № " + (circles.indexOf(circle) + 1));
                     System.out.printf("Shape: %.2f", circle.getShape());
                     System.out.println();
-                    System.out.println("TOTAL: " + (totalCircles[0] += circle.getShape()));
+                    totalCircles[0] += circle.getShape();
                 }
 
         );
+        System.out.println("TOTAL: " + (totalCircles[0] ));
 
 
         List<Square> squares = new ArrayList<>();
@@ -57,11 +58,11 @@ public class Main {
                     System.out.println("Square № " + (squares.indexOf(square) + 1));
                     System.out.printf("Shape: %.2f", square.getShape());
                     System.out.println();
-                    System.out.println("TOTAL: " + (totalSquares[0] += square.getShape()));
+                    totalSquares[0] += square.getShape();
                 }
         );
 
-
+        System.out.println("TOTAL: " + (totalSquares[0] ));
     }
 
 }
