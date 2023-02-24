@@ -1,9 +1,11 @@
 package com.hillel.rosenko.lessons.lesson4;
 
-public class Track implements Obstacles{
+public class Track extends Obstacle {
+    public Track(int length) {
+        super(length);
+    }
 
-    @Override
-    public void start(Animal animal) {
-        animal.run();
+    public void overcome(Animal animal) {
+        animal.run(this.getLength());
     }
 }
