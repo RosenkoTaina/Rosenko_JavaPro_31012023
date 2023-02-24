@@ -3,25 +3,26 @@ package com.hillel.rosenko.lessons.lesson4;
 public class Main {
     public static void main(String[] args) {
 
-        Obstacles[] obstacles = {
-                new Pool(),
-                new Track()
-        };
-
-        Animal[] animals = {
-                new Cat("Tom", 50),
-                new Dog("Sausage", 10,200)
+        Obstacle[] obstacles = {
+                new Pool(5),
+                new Track(50),
 
         };
 
-        for (Obstacles obstacle : obstacles) {
-            for (Animal animal : animals) {
-                obstacle.start(animal);
+        Animals[] animals = {
+             new Cat("Cat1"),
+                new Dog("Dog1"),
+                new Cat("Chip"),
+        };
+
+        for (Animals animal : animals) {
+                Obstacle.start(animal);
             }
-        }
-        int k = animals.length;
-        System.out.println("Number of animals: " + k);
-        System.out.println(Cat.noOfCats + " cat");
-        System.out.println(Dog.noOfDogs + " dog");
+        System.out.println("Cat count: " + Cat.getCatCount());
+        System.out.println("Dog count: " + Dog.getDogCount());
+        System.out.println("Animal count: " + Animals.getAnimalCount());
+
     }
-}
+
+    }
+

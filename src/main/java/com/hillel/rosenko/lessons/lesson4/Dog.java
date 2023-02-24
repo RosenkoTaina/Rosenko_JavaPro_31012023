@@ -1,42 +1,36 @@
 package com.hillel.rosenko.lessons.lesson4;
 
-public class Dog extends Animal {
-    int swimDistance;
-    int runDistance;
-    static int noOfDogs = 0;
-    public Dog(String name, int swimDistance, int runDistance) {
+public class Dog extends Animals {
+    private static int dogCount;
+
+    public Dog(String name) {
         super(name);
-        this.swimDistance = swimDistance;
-        this.runDistance = runDistance;
-        System.out.println("Dog " + name);
+        dogCount++;
     }
 
-    public int getSwimDistance() {
-        if (swimDistance < 0 || swimDistance > 10) {
-            throw new IllegalArgumentException("dog cant swim so far");
-        } else return swimDistance;
-    }
-        public int getRunDistance() {
-            if (runDistance < 0 || runDistance > 500) {
-                throw new IllegalArgumentException("dog cant run so far");
-            } else return runDistance;
-        }
-    static {
-        noOfDogs += 1;
+    public static int getDogCount() {
+        return dogCount;
     }
 
     @Override
-        public void run() {
-        System.out.println(getName() + " run " + getRunDistance() + " meters");
+    public void run(int distance) {
+        if (distance < 0) {
+            System.out.println ("Wrong data for Dog to run");
+        } else if (distance > 500) {
+            System.out.println ("Dog cant run so far");
+        } else {
+            super.run(distance);
         }
-
-
-        @Override
-        public void swim() {
-            System.out.println (getName() + " swim " + getSwimDistance() + " meters");
-        }
-
     }
 
-
-
+    @Override
+    public void swim(int distance) {
+        if (distance < 0) {
+             System.out.println ("Wrong data for Dog to swim");
+        } else if (distance > 10) {
+            System.out.println ("Dog cant swim so far");
+        } else {
+            super.swim(distance);
+        }
+    }
+}
