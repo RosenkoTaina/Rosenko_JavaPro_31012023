@@ -15,7 +15,6 @@ public abstract class Animal {
         animalCount++;
     }
 
-
     public static int getAnimalCount() {
         return animalCount;
     }

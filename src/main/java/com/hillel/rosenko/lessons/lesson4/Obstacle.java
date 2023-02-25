@@ -1,5 +1,4 @@
 package com.hillel.rosenko.lessons.lesson4;
-
 public abstract class Obstacle {
     private int length;
 
