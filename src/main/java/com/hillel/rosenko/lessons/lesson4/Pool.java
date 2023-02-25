@@ -8,3 +8,4 @@ public class Pool extends Obstacle {
         animal.swim(this.getLength());
     }
 }
+

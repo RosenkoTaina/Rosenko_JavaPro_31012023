@@ -5,7 +5,6 @@ public class Dog extends Animal {
         super(name, maxRunDistance, maxSwimDistance);
         dogCount++;
     }
-
     public static int getDogCount() {
         return dogCount;
     }

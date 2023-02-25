@@ -14,11 +14,9 @@ public abstract class Animal {
         this.maxSwimDistance = maxSwimDistance;
         animalCount++;
     }
-
     public static int getAnimalCount() {
         return animalCount;
     }
-
     public void run(int distance) {
         if (distance <= maxRunDistance) {
             System.out.println(name + " ran " + distance + " m.");
@@ -26,7 +24,6 @@ public abstract class Animal {
             System.out.println(name + " can't run that far.");
         }
     }
-
     public void swim(int distance) {
         if (maxSwimDistance == 0) {
             System.out.println(name + " can't swim.");

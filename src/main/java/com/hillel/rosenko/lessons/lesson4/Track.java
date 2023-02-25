@@ -8,3 +8,4 @@ public class Track extends Obstacle {
         animal.run(this.getLength());
     }
 }
+

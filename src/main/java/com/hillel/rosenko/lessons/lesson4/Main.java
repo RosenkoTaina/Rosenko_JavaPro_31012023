@@ -29,3 +29,5 @@ public class Main {
         System.out.println("Animal count: " + Animal.getAnimalCount());
     }
 }
+
+

@@ -4,3 +4,4 @@ public class InvalidObjectParametersException extends Exception {
         super(message);
     }
 }
+

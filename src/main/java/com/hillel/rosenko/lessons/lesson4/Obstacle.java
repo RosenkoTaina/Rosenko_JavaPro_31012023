@@ -12,3 +12,4 @@ public abstract class Obstacle {
 
     public abstract void overcome(Animal animal);
 }
+
