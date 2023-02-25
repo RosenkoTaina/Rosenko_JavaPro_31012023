@@ -3,9 +3,15 @@ package com.hillel.rosenko.lessons.lesson4;
 public abstract class Animal {
     private String name;
     private static int animalCount;
-
-    public Animal(String name) {
+    private int maxRunDistance;
+    private int maxSwimDistance;
+    public Animal(String name, int maxRunDistance, int maxSwimDistance) throws InvalidObjectParametersException {
         this.name = name;
+        if (maxRunDistance < 0 || maxSwimDistance < 0) {
+            throw new InvalidObjectParametersException("myAnimalsParam must be non-negative");
+        }
+        this.maxRunDistance = maxRunDistance;
+        this.maxSwimDistance = maxSwimDistance;
         animalCount++;
     }
 
@@ -14,37 +20,21 @@ public abstract class Animal {
     }
 
     public void run(int distance) {
-        if (distance < 0) {
-            System.out.println("Invalid distance input");
-            return;
-        }
-
-        String animalType = this.getClass().getSimpleName();
-        int maxDistance = 0;
-
-        if (animalType.equals("Cat")) {
-            maxDistance = 200;
-        } else if (animalType.equals("Dog")) {
-            maxDistance = 500;
-        }
-
-        if (distance > maxDistance) {
-            System.out.println(this.name + " can't run that far");
+        if (distance <= maxRunDistance) {
+            System.out.println(name + " ran " + distance + " m.");
         } else {
-            System.out.println(this.name + " ran " + distance + "m");
+            System.out.println(name + " can't run that far.");
         }
     }
+
     public void swim(int distance) {
-        String animalType = this.getClass().getSimpleName();
-
-        if (animalType.equals("Cat")) {
-            System.out.println(this.name + " can't swim");
-            return;
-        } else if (animalType.equals("Dog") && distance > 10) {
-            System.out.println(this.name + " can't swim that far");
-            return;
+        if (maxSwimDistance == 0) {
+            System.out.println(name + " can't swim.");
+        } else if (distance <= maxSwimDistance) {
+            System.out.println(name + " swam " + distance + " m.");
+        } else {
+            System.out.println(name + " can't swim that far.");
         }
-
-        System.out.println(this.name + " swam " + distance + "m");
     }
+
 }
