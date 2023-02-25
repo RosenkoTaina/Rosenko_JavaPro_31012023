@@ -1,5 +1,4 @@
 package com.hillel.rosenko.lessons.lesson4;
-
 public class Cat extends Animal {
     private static int catCount;
     public Cat(String name, int maxRunDistance, int maxSwimDistance) throws InvalidObjectParametersException {
@@ -9,7 +8,6 @@ public class Cat extends Animal {
         }
         catCount++;
     }
-
     public static int getCatCount() {
         return catCount;
     }
