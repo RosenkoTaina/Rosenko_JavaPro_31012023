@@ -1,17 +1,22 @@
 package com.hillel.rosenko.lessons.lesson4;
 
 public class Main {
-    public static void main(String[] args) {
-        Obstacle[] obstacles = {
-                new Pool(6),
-                new Track(50)
-        };
+    public static void main(String[] args) throws InvalidObjectParametersException {
 
-        Animal[] animals = {
-                new Cat("Tom"),
-                new Dog("Rex"),
-                new Cat("Fluffy")
+        Obstacle[] obstacles = {
+                new Pool(10),
+                new Track(200)
         };
+        Animal[] animals = new Animal[0];
+        try {
+            animals = new Animal[]{
+                    new Cat("Tom", 200, 0),
+                    new Dog("Rex", 300, 10),
+                    new Cat("Fluffy", 300, 0)
+            };
+        } catch (InvalidObjectParametersException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         for (Animal animal : animals) {
             for (Obstacle obstacle : obstacles) {
@@ -24,3 +29,5 @@ public class Main {
         System.out.println("Animal count: " + Animal.getAnimalCount());
     }
 }
+
+
