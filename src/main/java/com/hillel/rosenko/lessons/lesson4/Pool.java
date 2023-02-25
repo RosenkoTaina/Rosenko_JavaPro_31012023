@@ -1,9 +1,11 @@
 package com.hillel.rosenko.lessons.lesson4;
 
-public class Pool implements Obstacles {
+public class Pool extends Obstacle {
+    public Pool(int length) {
+        super(length);
+    }
 
-    @Override
-    public void start(Animal animal) {
-        animal.swim();
+    public void overcome(Animal animal) {
+        animal.swim(this.getLength());
     }
 }
