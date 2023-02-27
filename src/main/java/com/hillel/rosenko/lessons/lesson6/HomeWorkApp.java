@@ -1,7 +1,7 @@
 package com.hillel.rosenko.lessons.lesson6;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 public class HomeWorkApp {
     public static void main(String[] args) {
         stringWriter();
@@ -123,7 +123,7 @@ public class HomeWorkApp {
         }
     }
 
-     public static boolean checkSumRange1(int a, int b) {
+    public static boolean checkSumRange1(int a, int b) {
         int sum = a + b;
         return (sum >= 10 && sum <= 20);
     }
@@ -173,7 +173,7 @@ public class HomeWorkApp {
             return false;
         } else {
             return true;
-            }
+        }
     }
 
     public static void printIsLeapYear(int num) {
@@ -182,6 +182,4 @@ public class HomeWorkApp {
     }
 
 }
-
-
 
