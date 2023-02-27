@@ -1,5 +1,4 @@
 package com.hillel.rosenko.lessons.lesson4;
-
 public abstract class Obstacle {
     private int length;
 
@@ -13,3 +12,4 @@ public abstract class Obstacle {
 
     public abstract void overcome(Animal animal);
 }
+
