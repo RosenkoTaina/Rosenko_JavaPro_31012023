@@ -1,0 +1,58 @@
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
+[Thu Mar 23 21:16:41 EET 2023][INFO] Message: Sum calculation started
+[Thu Mar 23 21:16:41 EET 2023][DEBUG] Message: MyCustomException
