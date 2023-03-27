@@ -14,25 +14,10 @@ public class FileMaxSizeReachedException extends Exception {
     this.filePath = filePath;
   }
 
-  public String getMessage() {
-    return message;
-  }
-
   @Override
   public String toString() {
     return "FileMaxSizeReachedException " + message + ", currentSize=" + currentSize + ", maxSize="
         + maxSize + ", filePath=" + filePath + "]";
   }
 
-  public Long getCurrentSize() {
-    return currentSize;
-  }
-
-  public long getMaxSize() {
-    return maxSize;
-  }
-
-  public String getFilePath() {
-    return filePath;
-  }
 }

@@ -7,6 +7,7 @@ public class FileLoggerConfiguration {
   private final long maxFileSize;
   private final String logFormat;
   private final String isConsoleLoggingEnabled;
+  private boolean consoleLoggingEnabled;
 
   // Configuration Constructor
   public FileLoggerConfiguration(String logFilePath, LoggingLevel loggingLevel, long maxFileSize,
@@ -17,6 +18,7 @@ public class FileLoggerConfiguration {
     this.logFormat = logFormat;
     this.isConsoleLoggingEnabled = isConsoleLoggingEnabled;
   }
+
 
   public String getLogFilePath() {
     return logFilePath;
@@ -34,7 +36,13 @@ public class FileLoggerConfiguration {
     return logFormat;
   }
 
-  public String isConsoleLoggingEnabled() {
-    return isConsoleLoggingEnabled;
+
+  public boolean isConsoleLoggingEnabled() {
+    return consoleLoggingEnabled;
+  }
+
+  public void setConsoleLoggingEnabled(boolean consoleLoggingEnabled) {
+    this.consoleLoggingEnabled = consoleLoggingEnabled;
   }
 }
+
