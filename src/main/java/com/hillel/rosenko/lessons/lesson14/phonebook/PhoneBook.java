@@ -1,46 +1,62 @@
 package com.hillel.rosenko.lessons.lesson14.phonebook;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-public class PhoneBook {
-  private Map<String, List<Record>> PhoneBook;
+public class PhoneBook implements PhoneBookInterface {
+  protected final Map<String, List<Record>> phoneBook;
 
   public PhoneBook() {
-    PhoneBook = new HashMap<>();
+    phoneBook = new HashMap<>();
   }
 
+  @Override
   public void add(String name, String phoneNumber) {
-    if (PhoneBook.containsKey(name)) {
-      PhoneBook.get(name).add(new Record(name, phoneNumber));
+    Objects.requireNonNull(name, "Name cannot be null.");
+    Objects.requireNonNull(phoneNumber, "Phone number cannot be null.");
+    if (phoneBook.containsKey(name)) {
+      List<Record> records = phoneBook.get(name);
+      for (Record record : records) {
+        if (record.phoneNumber().equals(phoneNumber)) {
+          System.out.println("Record already exists!");
+          return;
+        }
+      }
+      records.add(new Record(name, phoneNumber));
     } else {
       ArrayList<Record> newRecord = new ArrayList<>();
       newRecord.add(new Record(name, phoneNumber));
-      PhoneBook.put(name, newRecord);
+      phoneBook.put(name, newRecord);
     }
   }
 
-  public String find(String name) {
-    if (PhoneBook.containsKey(name)) {
-      return PhoneBook.get(name).toString();
+  @Override
+  public void find(String name) {
+    Objects.requireNonNull(name, "Name cannot be null.");
+
+    if (phoneBook.containsKey(name)) {
+      System.out.println(phoneBook.get(name).get(0).toString());
     } else {
-      return "Record not found";
+      System.out.println("No records found");
     }
   }
 
-  public String findAll(String name) {
+  @Override
+  public void findAll(String name) {
+    Objects.requireNonNull(name, "Name cannot be null.");
     StringBuilder result = new StringBuilder();
-    for (String key : PhoneBook.keySet()) {
+    for (String key : phoneBook.keySet()) {
       if (key.contains(name)) {
-        result.append(PhoneBook.get(key)).append("\n");
+        result.append(phoneBook.get(key)).append("\n");
       }
     }
     if (result.length() > 0) {
-      return result.toString();
+      System.out.println(result);
     } else {
-      return "No records found";
+      System.out.println("No records found");
     }
   }
 }
-

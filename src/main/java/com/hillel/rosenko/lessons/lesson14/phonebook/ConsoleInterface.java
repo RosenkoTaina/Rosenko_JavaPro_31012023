@@ -1,14 +1,15 @@
 package com.hillel.rosenko.lessons.lesson14.phonebook;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-public class ConsoleInterface implements PhoneBookInterface {
+public class ConsoleInterface extends PhoneBook {
   private static Scanner scanner = new Scanner(System.in);
-  private PhoneBook phoneBook;
 
   public ConsoleInterface() {
-    phoneBook = new PhoneBook();
+    super();
   }
 
   public void start() {
@@ -37,39 +38,39 @@ public class ConsoleInterface implements PhoneBookInterface {
     }
   }
 
-  public void add(String name, String phoneNumber) {
-    phoneBook.add(name, phoneNumber);
-    System.out.println("Record added successfully!");
-  }
 
-  public String find(String name) {
-    return phoneBook.find(name);
-  }
-
-  public String findAll(String name) {
-    return phoneBook.findAll(name);
+  public static String getValidInput(String prompt, String regex) {
+    String input;
+    boolean isValid = false;
+    Pattern pattern = Pattern.compile(regex);
+    Scanner scanner = new Scanner(System.in);
+    do {
+      System.out.print(prompt);
+      input = scanner.nextLine();
+      Matcher matcher = pattern.matcher(input);
+      if (matcher.matches()) {
+        isValid = true;
+      } else {
+        System.out.println("Invalid input. Please try again.");
+      }
+    } while (!isValid);
+    return input;
   }
 
   private void addRecord() {
-    System.out.println("Enter name:");
-    String name = scanner.nextLine();
-
-    System.out.println("Enter phone number:");
-    String phoneNumber = scanner.nextLine();
-
+    String name = getValidInput("Enter name: ", "[a-zA-Z]+");
+    String phoneNumber = getValidInput("Enter phone number: ", "\\+?\\d{2}-\\d{3}-\\d{3}-\\d{4}");
     add(name, phoneNumber);
   }
 
   private void findRecord() {
-    System.out.println("Enter name to search:");
-    String name = scanner.nextLine();
-    System.out.println(find(name));
+    String name = getValidInput("Enter name to search: ", "[a-zA-Z]+");
+    find(name);
   }
 
   private void findAllRecords() {
-    System.out.println("Enter name to search:");
-    String name = scanner.nextLine();
-    System.out.println(findAll(name));
+    String name = getValidInput("Enter name to search: ", "[a-zA-Z]+");
+    findAll(name);
   }
-}
 
+}
