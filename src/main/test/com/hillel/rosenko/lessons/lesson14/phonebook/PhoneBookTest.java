@@ -36,19 +36,13 @@ class PhoneBookTest {
 
   @Test
   void testFindAllRecords() {
-    phoneBook.add("John", "123-456-7890");
-    phoneBook.add("Jane", "123-456-7890");
-    phoneBook.add("Jim", "123-456-7890");
-    phoneBook.findAll("J");
-    Assertions.assertEquals("[Record {name='John', phoneNumber='123-456-7890'}, Record {name='Jane', phoneNumber='987-654-3210'}]\n", systemOutRule.getLog());
+    phoneBook.add("Kate", "123-456-7890");
+    phoneBook.add("Semen", "123-456-7890");
+    phoneBook.add("Ola", "123-456-7890");
+    phoneBook.findAll("Kate");
+    Assertions.assertEquals("[Record {name='Kate', phoneNumber='123-456-7890'},\n", systemOutRule.getLog());
   }
+// не працює(
 
 
-  @Test
-  void find() {
-  }
-
-  @Test
-  void findAll() {
-  }
 }

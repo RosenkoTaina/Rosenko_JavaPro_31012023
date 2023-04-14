@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 public class Task1 {
 
   public static int countOccurrence(List<String> list, String str) {
+    if (list == null) {
+      throw new IllegalArgumentException("List cannot be null");
+    }
     int count = 0;
     for (String s : list) {
       if (s.equals(str)) {
@@ -22,7 +25,6 @@ public class Task1 {
     }
     return count;
   }
-
 
   public static int countOccurrence2(List<String> list, String str) {
     return Collections.frequency(list, str);
@@ -42,6 +44,7 @@ public class Task1 {
     }
     return newList;
   }
+
 
   public static List<Integer> findUnique2(List<Integer> list) {
     Set<Integer> set = new HashSet<>(list);
@@ -64,21 +67,15 @@ public class Task1 {
 
 
   public static void calcOccurrence2(List<String> list) {
-    Map<String, Integer> duplicateCountMap =
-        list.stream().collect(Collectors.toMap(Function.identity(), items -> 1, Math::addExact));
-    duplicateCountMap.forEach((key, value) -> System.out.println("Key: " + key + " " + value));
-  }
-
-
-  public static void calcOccurrence3(List<String> list) {
+    Map<String, Integer> duplicateCountMap;
     if (list == null || list.isEmpty()) {
       System.out.println("List is null or empty");
-      return;
-    }
-    Map<String, Integer> duplicateCountMap = list.stream().map(String::toLowerCase)
-        .collect(Collectors.toMap(Function.identity(), items -> 1, Math::addExact));
+    } else {
+      duplicateCountMap = list.stream().map(String::toLowerCase)
+          .collect(Collectors.toMap(Function.identity(), items -> 1, Math::addExact));
 
-    duplicateCountMap.forEach((key, value) -> System.out.println(key + " " + value));
+      duplicateCountMap.forEach((key, value) -> System.out.println(key + " " + value));
+    }
   }
 
 
@@ -114,9 +111,3 @@ public class Task1 {
   }
 
 }
-
-
-
-
-
-
