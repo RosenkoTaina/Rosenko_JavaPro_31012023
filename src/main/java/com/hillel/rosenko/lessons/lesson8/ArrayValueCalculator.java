@@ -1,23 +1,21 @@
 package com.hillel.rosenko.lessons.lesson8;
 
 public class ArrayValueCalculator {
-  public int doCalc(String[][] arr) throws MyCustomException {
-    int sum = 0;
-    if (arr == null || arr.length != 4) {
-      throw new ArraySizeException("Array size should be 4x4");
-    }
-    for (int i = 0; i < 4; i++) {
-      if (arr[i] == null || arr[i].length != 4) {
-        throw new ArraySizeException("Array size should be 4x4");
-      }
-      for (String val : arr[i]) {
-        try {
-          sum += Integer.parseInt(val);
-        } catch (NumberFormatException e) {
-          throw new ArrayDataException("Invalid value in array: " + val, e);
+
+    public static int doCalc(String[][] array) throws ArraySizeException {
+        int sum = 0;
+        if (array.length != 4 || array[0].length != 4) {
+            throw new ArraySizeException("Масив повинен мати розмірність 4x4");
+        } else {
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[i].length; j++) {
+                    sum += Integer.parseInt(array[i][j]);
+                }
+            }
         }
-      }
+        return sum;
     }
-    return sum;
-  }
 }
+
+
+
