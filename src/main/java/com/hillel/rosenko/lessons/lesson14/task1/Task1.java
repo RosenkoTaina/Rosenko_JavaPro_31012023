@@ -1,4 +1,4 @@
-package com.hillel.rosenko.lessons.lesson14;
+package com.hillel.rosenko.lessons.lesson14.task1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +12,17 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Task1 {
+  public static void main(String[] args) {
+
+    List<Occurrence> occurrences =
+        Occurrence.findOccurrence(Arrays.asList("bird", "cat", "dog", "bird", "cat"));
+    for (Occurrence occurrence : occurrences) {
+      System.out.println(occurrence.toString());
+    }
+  }
+
+
+
 
   public static int countOccurrence(List<String> list, String str) {
     if (list == null) {
@@ -32,7 +43,7 @@ public class Task1 {
 
 
   public static List<Object> toList(Object[] array) {
-    return new ArrayList<>(Arrays.asList(array));
+    return Arrays.asList(array);
   }
 
   public static ArrayList<Integer> findUnique(List<Integer> list) {
@@ -79,27 +90,6 @@ public class Task1 {
   }
 
 
-  public static void findOccurrence(List<String> list) {
-    if (list == null || list.isEmpty()) {
-      System.out.println("List is empty or null.");
-      return;
-    }
-
-    Map<String, Integer> wordCountMap = new HashMap<>();
-    for (String word : list) {
-      if (word == null) {
-        continue;
-      }
-      String lowercaseWord = word.toLowerCase();
-      wordCountMap.put(lowercaseWord, wordCountMap.getOrDefault(lowercaseWord, 0) + 1);
-    }
-
-    for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-      String name = entry.getKey();
-      int occurrence = entry.getValue();
-      System.out.println("{name: \"" + name + "\", occurrence: " + occurrence + "}");
-    }
-  }
 
   public static <T> Map<T, Long> findOccurrence2(List<T> list) {
     Map<T, Long> countMap =
