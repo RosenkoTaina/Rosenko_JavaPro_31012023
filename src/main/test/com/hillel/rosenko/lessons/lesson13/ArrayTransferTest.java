@@ -1,11 +1,9 @@
-package com.hillel.lesson.lesson13;
+package com.hillel.rosenko.lessons.lesson13;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.hillel.rosenko.lessons.lesson13.ArrayDataException;
-import com.hillel.rosenko.lessons.lesson13.ArrayTransfer;
 import java.util.Arrays;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
