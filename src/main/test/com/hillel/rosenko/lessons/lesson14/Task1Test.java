@@ -1,12 +1,12 @@
 package com.hillel.rosenko.lessons.lesson14;
 
-import static com.hillel.rosenko.lessons.lesson14.Task1.calcOccurrence;
-import static com.hillel.rosenko.lessons.lesson14.Task1.countOccurrence;
-import static com.hillel.rosenko.lessons.lesson14.Task1.countOccurrence2;
-import static com.hillel.rosenko.lessons.lesson14.Task1.findOccurrence2;
-import static com.hillel.rosenko.lessons.lesson14.Task1.findUnique;
-import static com.hillel.rosenko.lessons.lesson14.Task1.findUnique2;
-import static com.hillel.rosenko.lessons.lesson14.Task1.toList;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.calcOccurrence;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.countOccurrence;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.countOccurrence2;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.findOccurrence2;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.findUnique;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.findUnique2;
+import static com.hillel.rosenko.lessons.lesson14.task1.Task1.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

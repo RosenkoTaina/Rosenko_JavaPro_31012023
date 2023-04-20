@@ -5,9 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ConsoleInterface  {
-  private static Scanner scanner = new Scanner(System.in);
-  private PhoneBook phoneBook;
+public class ConsoleInterface {
+  private static final Scanner scanner = new Scanner(System.in);
+  private final PhoneBook phoneBook;
 
   public ConsoleInterface() {
     this.phoneBook = new PhoneBook();
@@ -44,7 +44,6 @@ public class ConsoleInterface  {
     String input;
     boolean isValid = false;
     Pattern pattern = Pattern.compile(regex);
-    Scanner scanner = new Scanner(System.in);
     do {
       System.out.print(prompt);
       input = scanner.nextLine();

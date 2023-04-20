@@ -1,5 +1,0 @@
-FILE; C:/Users/User/Documents/IdeaProject/JavaPro_Rosenko/Logger
-LEVEL; DEBUG
-MAX-SIZE; 4000
-FORMAT; .txt
-CONSOLE; TRUE
