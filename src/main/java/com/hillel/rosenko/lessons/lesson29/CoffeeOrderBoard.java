@@ -50,15 +50,17 @@ public class CoffeeOrderBoard {
   }
 
   public void draw() {
-    logger.info("Drawing coffee order board");
-    System.out.println("==========================");
-    System.out.println("Num\t| Name");
-    System.out.println("==========================");
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("==========================\n");
+    stringBuilder.append("Num\t| Name\n");
+    stringBuilder.append("==========================\n");
 
     for (Order order : orderList) {
-      System.out.println(order.getOrder() + "\t| " + order.getName());
+      stringBuilder.append(order.getOrder()).append("\t| ").append(order.getName()).append("\n");
     }
 
-    System.out.println("==========================");
+    stringBuilder.append("==========================");
+
+    logger.info("Drawing coffee order board:\n{}", stringBuilder.toString());
   }
 }
