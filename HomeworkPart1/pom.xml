@@ -26,6 +26,14 @@
             <version>5.9.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.dorkbox</groupId>
+            <artifactId>PropertyLoader</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+
     </dependencies>
 
 
