@@ -4,12 +4,7 @@ import entity.Lesson;
 import enums.DataSourceFactory;
 import lombok.SneakyThrows;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,25 +14,17 @@ public class LessonRepository implements Repository<Lesson> {
     @SneakyThrows
     @Override
     public List<Lesson> getAll() {
-        List<Lesson> lessons = new ArrayList<>();
         String query = "SELECT * FROM lesson";
-
+        List<Lesson> lessons = new ArrayList<>();
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                Lesson lesson = Lesson.builder()
-                        .id(resultSet.getLong("id"))
-                        .name(resultSet.getString("name"))
-                        .updatedAt(resultSet.getTimestamp("updatedAt").toLocalDateTime())
-                        .homeworkId(resultSet.getLong("homework_id"))
-                        .build();
-
+                Lesson lesson = buildLessonFromResultSet(resultSet);
                 lessons.add(lesson);
             }
         }
-
         return lessons;
     }
 
@@ -54,14 +41,9 @@ public class LessonRepository implements Repository<Lesson> {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Lesson lesson = Lesson.builder()
-                        .id(resultSet.getLong("id"))
-                        .name(resultSet.getString("name"))
-                        .updatedAt(resultSet.getTimestamp("updatedAt").toLocalDateTime())
-                        .homeworkId(resultSet.getLong("homework_id"))
-                        .build();
-
+                Lesson lesson = buildLessonFromResultSet(resultSet);
                 getLesson.add(lesson);
+
             }
         }
 
@@ -117,4 +99,17 @@ public class LessonRepository implements Repository<Lesson> {
             statement.executeUpdate();
         }
     }
+
+    private Lesson buildLessonFromResultSet(ResultSet resultSet) throws SQLException {
+        Lesson lesson = new Lesson();
+        lesson.setId(resultSet.getLong("id"));
+        lesson.setName(resultSet.getString("name"));
+        lesson.setUpdatedAt(resultSet.getTimestamp("updatedAt").toLocalDateTime());
+        lesson.setHomeworkId(resultSet.getLong("homework_id"));
+
+
+        return lesson;
+    }
+
+
 }

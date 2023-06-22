@@ -4,10 +4,7 @@ import entity.Homework;
 import enums.DataSourceFactory;
 import lombok.SneakyThrows;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +20,7 @@ public class HomeworkRepository implements Repository<Homework> {
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                Homework homework = Homework.builder()
-                        .id(resultSet.getLong("id"))
-                        .name(resultSet.getString("name"))
-                        .description(resultSet.getString("description"))
-                        .build();
-
+                Homework homework = buildHomeworkFromResultSet(resultSet);
                 homeworks.add(homework);
             }
         }
@@ -49,12 +41,7 @@ public class HomeworkRepository implements Repository<Homework> {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Homework homework = Homework.builder()
-                        .id(resultSet.getLong("id"))
-                        .name(resultSet.getString("name"))
-                        .description(resultSet.getString("description"))
-                        .build();
-
+                Homework homework = buildHomeworkFromResultSet(resultSet);
                 getHomework.add(homework);
             }
         }
@@ -105,5 +92,16 @@ public class HomeworkRepository implements Repository<Homework> {
             statement.execute();
         }
     }
+
+    private Homework buildHomeworkFromResultSet(ResultSet resultSet) throws SQLException {
+        Homework homework = new Homework();
+        homework.setId(resultSet.getLong("id"));
+        homework.setName(resultSet.getString("name"));
+        homework.setDescription(resultSet.getString("description"));
+
+        return homework;
+    }
+
+
 }
 
