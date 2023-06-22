@@ -4,7 +4,10 @@ import entity.Homework;
 import enums.DataSourceFactory;
 import lombok.SneakyThrows;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,23 +18,22 @@ public class HomeworkRepository implements Repository<Homework> {
         String query = "SELECT * FROM homework";
         List<Homework> homeworks = new ArrayList<>();
 
-       try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
-            Statement statement = connection.createStatement();
-       ) {
-           ResultSet resultSet = statement.executeQuery(query);
+        try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
 
-           while (resultSet.next()) {
+            while (resultSet.next()) {
+                Homework homework = Homework.builder()
+                        .id(resultSet.getLong("id"))
+                        .name(resultSet.getString("name"))
+                        .description(resultSet.getString("description"))
+                        .build();
 
-            Homework homework = Homework.builder()
-               .id(resultSet.getLong("id"))
-               .name(resultSet.getString("name"))
-               .description(resultSet.getString("description"))
-               .build();
+                homeworks.add(homework);
+            }
+        }
 
-            homeworks.add(homework);
-           }
-    }
-       return homeworks;
+        return homeworks;
     }
 
     @SneakyThrows
@@ -39,9 +41,10 @@ public class HomeworkRepository implements Repository<Homework> {
     public List<Homework> get(Long id) {
         String query = "SELECT * FROM homework WHERE id = ?";
         List<Homework> getHomework = new ArrayList<>();
+
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-        ) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
@@ -55,55 +58,52 @@ public class HomeworkRepository implements Repository<Homework> {
                 getHomework.add(homework);
             }
         }
+
         return getHomework;
     }
-
 
     @Override
     @SneakyThrows
     public void update(Long id, Homework item) {
         String query = "UPDATE homework SET name = ?, description = ? WHERE id = ?";
+
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-        ) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
             statement.setString(1, item.getName());
             statement.setString(2, item.getDescription());
-            statement.setObject(3, id);
+            statement.setLong(3, id);
 
             statement.executeUpdate();
         }
     }
-
 
     @Override
     @SneakyThrows
     public void delete(Long id) {
         String query = "DELETE FROM homework WHERE id = ?";
+
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-        ) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
             statement.setLong(1, id);
             statement.executeUpdate();
         }
     }
 
-
-
     @Override
     @SneakyThrows
     public void add(Homework homework) {
-        String insert = "INSERT INTO homework(name, description) " +
-                "values (?, ?)";
+        String insert = "INSERT INTO homework (name, description) VALUES (?, ?)";
+
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(insert);
-        ) {
+             PreparedStatement statement = connection.prepareStatement(insert)) {
+
             statement.setString(1, homework.getName());
             statement.setString(2, homework.getDescription());
+
             statement.execute();
         }
     }
-
-
-
-    
 }
+

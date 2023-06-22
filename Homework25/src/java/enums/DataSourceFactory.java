@@ -1,14 +1,13 @@
 package enums;
 
-import lombok.SneakyThrows;
+
+import com.mysql.cj.jdbc.MysqlDataSource;
 import service.PropertyReader;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
-import com.mysql.cj.jdbc.MysqlDataSource;
-
-import javax.sql.DataSource;
 
 public enum DataSourceFactory {
     INSTANCE;
@@ -29,12 +28,6 @@ public enum DataSourceFactory {
 
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
-    }
-
-    public void closeConnection(Connection connection) throws SQLException {
-        if (connection != null) {
-            connection.close();
-        }
     }
 
 

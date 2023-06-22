@@ -4,38 +4,47 @@ import entity.Lesson;
 import enums.DataSourceFactory;
 import lombok.SneakyThrows;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+
 public class LessonRepository implements Repository<Lesson> {
     private HomeworkRepository homeworkRepository = new HomeworkRepository();
 
     @SneakyThrows
     @Override
     public List<Lesson> getAll() {
-        String query = "SELECT l.id, l.name, l.updatedAt, h.id AS homeworkId" +
-                " FROM lesson l" +
-                " LEFT JOIN homework h ON l.homework_id = h.id";
         List<Lesson> lessons = new ArrayList<>();
+        String query = "SELECT * FROM lesson";
 
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                Lesson lesson = buildLessonFromResultSet(resultSet);
+                Lesson lesson = Lesson.builder()
+                        .id(resultSet.getLong("id"))
+                        .name(resultSet.getString("name"))
+                        .updatedAt(resultSet.getTimestamp("updatedAt").toLocalDateTime())
+                        .homeworkId(resultSet.getLong("homework_id"))
+                        .build();
+
                 lessons.add(lesson);
             }
         }
+
         return lessons;
     }
+
     @SneakyThrows
     @Override
     public List<Lesson> get(Long id) {
-        String query = "SELECT l.id, l.name, l.updatedAt, h.id AS homeworkId" +
-                " FROM lesson l" +
-                " LEFT JOIN homework h ON l.homework_id = h.id" +
-                " WHERE l.id = ?";
+        String query = "SELECT * FROM lesson WHERE id = ?";
         List<Lesson> getLesson = new ArrayList<>();
 
         try (Connection connection = DataSourceFactory.INSTANCE.getConnection();
@@ -45,12 +54,20 @@ public class LessonRepository implements Repository<Lesson> {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Lesson lesson = buildLessonFromResultSet(resultSet);
+                Lesson lesson = Lesson.builder()
+                        .id(resultSet.getLong("id"))
+                        .name(resultSet.getString("name"))
+                        .updatedAt(resultSet.getTimestamp("updatedAt").toLocalDateTime())
+                        .homeworkId(resultSet.getLong("homework_id"))
+                        .build();
+
                 getLesson.add(lesson);
             }
         }
+
         return getLesson;
     }
+
     @SneakyThrows
     @Override
     public void update(Long id, Lesson item) {
@@ -60,9 +77,9 @@ public class LessonRepository implements Repository<Lesson> {
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, item.getName());
-            statement.setString(2, item.getUpdatedAt());
-            if (item.getHomework() != null) {
-                statement.setLong(3, item.getHomework().getId());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getUpdatedAt()));
+            if (item.getHomeworkId() != null) {
+                statement.setLong(3, item.getHomeworkId());
             } else {
                 statement.setNull(3, Types.NULL);
             }
@@ -71,6 +88,7 @@ public class LessonRepository implements Repository<Lesson> {
             statement.executeUpdate();
         }
     }
+
     @SneakyThrows
     @Override
     public void add(Lesson lesson) {
@@ -80,12 +98,13 @@ public class LessonRepository implements Repository<Lesson> {
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, lesson.getName());
-            statement.setString(2, lesson.getUpdatedAt());
+            statement.setTimestamp(2, Timestamp.valueOf(lesson.getUpdatedAt()));
             statement.setLong(3, lesson.getHomeworkId());
 
             statement.execute();
         }
     }
+
     @SneakyThrows
     @Override
     public void delete(Long id) {
@@ -97,14 +116,5 @@ public class LessonRepository implements Repository<Lesson> {
             statement.setLong(1, id);
             statement.executeUpdate();
         }
-    }
-
-    private Lesson buildLessonFromResultSet(ResultSet resultSet) throws SQLException {
-        Lesson lesson = new Lesson();
-        lesson.setId(resultSet.getLong("id"));
-        lesson.setName(resultSet.getString("name"));
-        lesson.setUpdatedAt(resultSet.getString("updatedAt"));
-        lesson.setHomeworkId(resultSet.getLong("homeworkId"));
-        return lesson;
     }
 }
